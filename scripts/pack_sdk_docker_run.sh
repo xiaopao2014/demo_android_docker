@@ -4,5 +4,5 @@ set -xeuo pipefail
 docker run \
 	-it --rm \
 	-v "$PWD":/application \
-	packsdkandroiddocker.image \
+	linliangbin/android_build_image \
     sh -c "$@"

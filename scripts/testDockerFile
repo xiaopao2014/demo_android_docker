@@ -1,0 +1,16 @@
+
+ENV SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" \
+    ANDROID_HOME="/usr/local/android-sdk" \
+    ANDROID_NDK="/opt/android-ndk" \
+    ANDROID_VERSION=26 \
+    ANDROID_BUILD_TOOLS_VERSION=26.0.2 \
+    ANDROID_NDK_VERSION="20"
+
+CMD ["gradle"]
+
+ENV GRADLE_TEST $pwd/.gradle
+ENV GRADLE_HOME /opt/gradle
+
+RUN echo $pwd
+
+RUN echo $GRADLE_TEST
