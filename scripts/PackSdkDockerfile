@@ -15,12 +15,13 @@ ENV SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-3859397.zi
 
 # Download Android SDK
 RUN mkdir "$ANDROID_HOME" .android \
+	&& touch /root/.android/repositories.cfg \
     && cd "$ANDROID_HOME" \
     && curl -o sdk.zip $SDK_URL \
     && unzip sdk.zip \
     && rm sdk.zip \
     && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses \ 
-    && $ANDROID_HOME/tools/bin/sdkmanager "cmake;3.6.4111459"
+    && $ANDROID_HOME/tools/bin/sdkmanager "cmake;3.6.4111459" 
 	
 
 # Install Android Build Tool and Libraries
