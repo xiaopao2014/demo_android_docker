@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
 
-docker build -t android_build.image -f ./scripts/PackSdkDockerfile .
+docker build -t linliangbin/android_build_image -f ./scripts/PackSdkDockerfile .
