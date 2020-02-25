@@ -3,13 +3,7 @@ LABEL maintainer = "linliangbin"
 
 LABEL version = "1.0"
 
-LABEL description = "
-This is a docker image for build android application which include: 
-1.AndroidSDK
-2.AndroidNDK
-3.Gradle 5.4.1
-
-"
+LABEL description = "This is a docker image for build android application which include: \n1.AndroidSDK\n2.AndroidNDK\n3.Gradle 5.4.1"
 
 # DOWNLOAD NDK
 
