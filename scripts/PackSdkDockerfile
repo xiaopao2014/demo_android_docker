@@ -19,20 +19,12 @@ ENV	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/${GRADLE_DOWNL
 RUN set -o errexit -o nounset \
 	&& mkdir -p "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}"  \
 	&& cd ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5} \
-	&& pwd \
     && echo "Downloading Gradle" \
 	&& echo ${GRADLE_DOWNLOAD_URL} \
     && wget --output-document=gradle.zip ${GRADLE_DOWNLOAD_URL} \
     && echo "Installing Gradle" \
     && unzip gradle.zip \
-	&& ls \
-	&& pwd \
-	&& echo ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle \
     && ln --symbolic "/root/${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle" /usr/bin/gradle \
     && echo "Testing Gradle installation" \
     && gradle --version 
-#	&& /root/${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle --version
 
-
-RUN mkdir /application
-WORKDIR /application
