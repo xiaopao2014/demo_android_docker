@@ -22,7 +22,7 @@ RUN set -o errexit -o nounset \
 	&& pwd \
     && echo "Downloading Gradle" \
 	&& echo ${GRADLE_DOWNLOAD_URL} \
-    && wgetcd  --output-document=gradle.zip ${GRADLE_DOWNLOAD_URL} \
+    && wget --output-document=gradle.zip ${GRADLE_DOWNLOAD_URL} \
     && echo "Installing Gradle" \
     && unzip gradle.zip \
 	&& ls \
