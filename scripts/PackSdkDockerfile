@@ -11,8 +11,8 @@ ENV GRADLE_VERSION=gradle-5.4.1 \
 	GRADLE_HOME=~/.gradle \
 	GRADLE_DISTRIBUTION_PATH=wrapper/dists 
 	
-#ENV	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/{$GRADLE_DOWNLOAD_VERSION}.zip \
-#	GRADLE_MD5="3221gyojl5jsh0helicew7rwx"
+ENV	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/{$GRADLE_DOWNLOAD_VERSION}.zip \
+	GRADLE_MD5="3221gyojl5jsh0helicew7rwx"
 	
 RUN set -o errexit -o nounset \
 	&& mkdir -p "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}"  \
