@@ -28,10 +28,10 @@ RUN set -o errexit -o nounset \
 	&& ls \
 	&& pwd \
 	&& echo ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle \
-    && ln --symbolic "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle" /usr/bin/gradle \
+    && ln --symbolic "/root/${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle" /usr/bin/gradle \
     && echo "Testing Gradle installation" \
-#    && gradle --version 
-	&& ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle --version
+    && gradle --version 
+#	&& /root/${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle --version
 
 
 RUN mkdir /application
