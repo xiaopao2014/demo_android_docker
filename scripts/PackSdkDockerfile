@@ -15,7 +15,7 @@ RUN set -o errexit -o nounset \
 	&& mkdir -p "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}"  \
 	&& cd "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}" \
 	&& pwd \
-	&& export GRADLE_MD5 = $GRADLE_DOWNLOAD_URL | md5sum \
+	&& export GRADLE_MD5=$GRADLE_DOWNLOAD_URL | md5sum \
 	&& echo $GRADLE_MD5 \
 	&& mkdir $GRADLE_MD5 \
 	&& cd $GRADLE_MD5 \
