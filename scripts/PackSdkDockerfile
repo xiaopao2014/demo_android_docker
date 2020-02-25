@@ -48,8 +48,8 @@ RUN wget -q --output-document=android-ndk.zip https://dl.google.com/android/repo
 
 ENV GRADLE_HOME=~/.gradle \
 	GRADLE_DISTRIBUTION_PATH= wrapper/dists \
-    GRADLE_VERSION gradle-5.4.1-all \
-	GRADLE_DOWNLOAD_URL https://services.gradle.org/distributions/${GRADLE_VERSION}.zip
+    GRADLE_VERSION=gradle-5.4.1-all \
+	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/${GRADLE_VERSION}.zip
 	
 RUN set -o errexit -o nounset \
 	&& cd "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}" \
