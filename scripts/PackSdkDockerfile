@@ -10,8 +10,7 @@ ENV GRADLE_HOME=~/.gradle \
 	GRADLE_DISTRIBUTION_PATH=wrapper/dists \
     GRADLE_VERSION=gradle-5.4.1-all 
 	
-ENV	
-	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/${GRADLE_VERSION}.zip \
+ENV	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/${GRADLE_VERSION}.zip \
 	GRADLE_MD5="3221gyojl5jsh0helicew7rwx"
 	
 RUN set -o errexit -o nounset \
