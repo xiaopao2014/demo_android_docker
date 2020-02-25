@@ -17,6 +17,7 @@ RUN set -o errexit -o nounset \
 	&& cd ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_MD5} \
 	&& pwd \
     && echo "Downloading Gradle" \
+	&& echo ${GRADLE_DOWNLOAD_URL} \
     && wget --no-verbose --output-document=gradle.zip ${GRADLE_DOWNLOAD_URL} \
     && echo "Installing Gradle" \
     && unzip gradle.zip \
