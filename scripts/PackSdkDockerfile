@@ -12,6 +12,7 @@ ENV GRADLE_HOME=~/.gradle \
 	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/${GRADLE_VERSION}.zip
 	
 RUN set -o errexit -o nounset \
+	&& mkdir "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}"  \
 	&& cd "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}" \
 	&& pwd \
 	&& export GRADLE_MD5 = $GRADLE_DOWNLOAD_URL | md5sum \
