@@ -6,23 +6,24 @@ LABEL version = "1.0"
 LABEL description = "This is a docker image for build android application which include: \n1.AndroidSDK\n2.AndroidNDK\n3.Gradle 5.4.1"
 
 	
-ENV GRADLE_HOME=~/.gradle \
+ENV GRADLE_VERSION=gradle-5.4.1 \
+	GRADLE_DOWNLOAD_VERSION=${GRADLE_VERSION}-all \
+	GRADLE_HOME=~/.gradle \
 	GRADLE_DISTRIBUTION_PATH=wrapper/dists \
-    GRADLE_VERSION=gradle-5.4.1-all 
 	
-ENV	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/${GRADLE_VERSION}.zip \
+ENV	GRADLE_DOWNLOAD_URL=https://services.gradle.org/distributions/{$GRADLE_DOWNLOAD_VERSION}.zip \
 	GRADLE_MD5="3221gyojl5jsh0helicew7rwx"
 	
 RUN set -o errexit -o nounset \
-	&& mkdir -p "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_MD5}"  \
-	&& cd ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_MD5} \
+	&& mkdir -p "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}"  \
+	&& cd ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5} \
 	&& pwd \
     && echo "Downloading Gradle" \
 	&& echo ${GRADLE_DOWNLOAD_URL} \
     && wget --no-verbose --output-document=gradle.zip ${GRADLE_DOWNLOAD_URL} \
     && echo "Installing Gradle" \
     && unzip gradle.zip \
-    && ln --symbolic "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle \
+    && ln --symbolic "${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle" /usr/bin/gradle \
     && echo "Testing Gradle installation" \
     && gradle --version
 
