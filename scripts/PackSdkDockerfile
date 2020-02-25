@@ -56,9 +56,11 @@ RUN set -o errexit -o nounset \
 	&& cd ${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5} \
     && echo "Downloading Gradle" \
 	&& echo ${GRADLE_DOWNLOAD_URL} \
-    && wget --output-document=gradle.zip ${GRADLE_DOWNLOAD_URL} \
+    && wget --output-document=${GRADLE_DOWNLOAD_VERSION}.zip ${GRADLE_DOWNLOAD_URL} \
     && echo "Installing Gradle" \
-    && unzip gradle.zip \
+    && touch ${GRADLE_DOWNLOAD_VERSION}.zip.lck \
+    && touch ${GRADLE_DOWNLOAD_VERSION}.zip.ok \ 
+    && unzip ${GRADLE_DOWNLOAD_VERSION}.zip \
     && ln --symbolic "/root/${GRADLE_HOME}/${GRADLE_DISTRIBUTION_PATH}/${GRADLE_DOWNLOAD_VERSION}/${GRADLE_MD5}/${GRADLE_VERSION}/bin/gradle" /usr/bin/gradle \
     && echo "Testing Gradle installation" \
     && gradle --version 
