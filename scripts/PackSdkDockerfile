@@ -6,8 +6,8 @@ LABEL version = "1.0"
 LABEL description = "This is a docker image for build android application which include: \n1.AndroidSDK\n2.AndroidNDK\n3.Gradle 5.4.1"
 
 	
-ENV GRADLE_VERSION=gradle-5.4.1 \
-	GRADLE_DOWNLOAD_VERSION=${GRADLE_VERSION}-all \
+ENV GRADLE_VERSION=gradle-5.4.1 
+ENV GRADLE_DOWNLOAD_VERSION=${GRADLE_VERSION}-all \
 	GRADLE_HOME=~/.gradle \
 	GRADLE_DISTRIBUTION_PATH=wrapper/dists 
 	
