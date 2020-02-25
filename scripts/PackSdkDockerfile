@@ -32,7 +32,8 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSIO
 
 
 #Install Make
-RUN apt-get install make
+RUN apt-get update \
+	apt-get install make
 
 # Download NDK
 RUN wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip && \
