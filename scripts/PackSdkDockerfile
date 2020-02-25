@@ -3,13 +3,13 @@ LABEL maintainer = "linliangbin"
 
 LABEL version = "1.0"
 
-LABEL description = "This is a docker image for build android application which include: \n1.AndroidSDK\n2.AndroidNDK\n3.Gradle 5.4.1"
+LABEL description = "This is a docker image for build android application which include: \n1.AndroidSDK 26\n2.AndroidNDK\n3.Gradle 5.4.1"
 
 WORKDIR /root/
 
 ENV SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" \
     ANDROID_HOME="/usr/local/android-sdk" \
-    ANDROID_NDK=${ANDROID_HOME}/ndk-bundle \
+    ANDROID_NDK="${ANDROID_HOME}/ndk-bundle" \
     ANDROID_VERSION=26 \
     ANDROID_BUILD_TOOLS_VERSION=28.0.3 \
 
@@ -29,18 +29,19 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSIO
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
 
-
+# Download NDK
+RUN wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip \
+    && unzip android-ndk.zip \
+	&& rm -f android-ndk.zip \
+	&& mv android-ndk-r19c android-ndk-linux
+	
+	
 #Install Make
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	unzip \
 	wget
 RUN apt-get install make
 
-# Download NDK
-RUN wget -q --output-document=android-ndk.zip https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip && \
-	unzip android-ndk.zip && \
-	rm -f android-ndk.zip && \
-	mv android-ndk-r19c android-ndk-linux
 
 #Gradle 下载
 ENV GRADLE_VERSION=gradle-5.4.1 
